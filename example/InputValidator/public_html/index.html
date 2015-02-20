@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>InputValidator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <input type="text" id="testinput">
+        <script>
+            function cvalue(e){
+                a=parseInt(e.target.value);
+                if(isNaN(a))
+                    navigator.vibrate(1000);
+                else alert("OK:"+a);
+            }
+            document.getElementById("testinput").addEventListener("change",cvalue);
+        </script>
+    </body>
+</html>
