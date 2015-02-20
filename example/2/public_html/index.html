@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="css/headers.css" type="text/css">
+        <link rel="stylesheet" href="css/layout.css" type="text/css">
+    </head>
+    <body>
+        <section role="region" class="vbox fit">
+            <header>
+         <menu type="toolbar">
+            <a href="edit.html"><span class="icon icon-edit">edit</span></a>
+            <a href="add.html"><span class="icon icon-add">add</span></a>
+         </menu>            
+                <h1>App name</h1>
+            </header>        
+            <section class="gaia-list fit scroll sticky">
+                <article>
+                    <header>Paragraphs</header>
+                    <ul>
+                        <li><button onclick="click()">edit</button></li>
+                        <li id="remotedata"></li>
+                    </ul>
+                </article>
+            </section>    
+        </section>    
+        <script>
+                        
+function reqListener () {
+  document.getElementById("remotedata").innerHTML=this.responseText;
+}
+
+function reqError(){
+    document.getElementById("remotedata").innerHTML="hiba";    
+}
+
+function click(){}
+    var oReq = new XMLHttpRequest();
+    oReq.onload = reqListener;
+    oReq.open("get", "https://jsonp.nodejitsu.com/?url=http://jsonview.com/example.json", true);
+    oReq.onerror=reqError();
+    oReq.send();                        
+            
+        </script>
+    </body>    
+</html>
