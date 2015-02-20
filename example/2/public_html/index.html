@@ -26,14 +26,15 @@
         <script>
                         
 function reqListener () {
-  document.getElementById("remotedata").innerHTML=this.responseText;
+    var obj=JSON.parse(this.responseText);
+  document.getElementById("remotedata").innerHTML=obj.anobject.anarray[0];
 }
 
 function reqError(){
     document.getElementById("remotedata").innerHTML="hiba";    
 }
 
-function click(){}
+
     var oReq = new XMLHttpRequest();
     oReq.onload = reqListener;
     oReq.open("get", "https://jsonp.nodejitsu.com/?url=http://jsonview.com/example.json", true);
