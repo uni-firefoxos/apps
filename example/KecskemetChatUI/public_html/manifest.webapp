@@ -1,0 +1,14 @@
+{
+  "name": "Chat UI",
+  "description": "Kecskemet chat",
+  "launch_path": "/index.html",
+  "icons": {
+    "512": "/img/icon-512.png",
+    "128": "/img/icon-128.png"
+  },
+  "developer": {
+    "name": "(K)",
+    "url": "http://github.com/uni-firefoxos/apps"
+  },
+  "default_locale": "hu"
+}

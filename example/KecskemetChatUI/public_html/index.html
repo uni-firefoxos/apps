@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/headers.css" rel="stylesheet" type="text/css">
+        <link href="css/drawer.css" rel="stylesheet" type="text/css">
+        <link href="css/app.css" rel="stylesheet" type="text/css">
+        <link href="css/layout.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div>
+            <section data-type="sidebar">
+                <header>
+                    <h1>Menu</h1>
+                </header>
+                <nav>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="exit.html">Exit</a></li>
+                    </ul>
+                </nav>
+            </section>
+            <section id="drawer" role="region">
+                <header>
+                    <a href="#content"><span class="icon icon-menu">hide sidebar</span></a>
+                    <a href="#drawer"><span class="icon icon-menu">show sidebar</span></a>
+                    <h1>ChatUI</h1>
+                </header>
+                <div role="main">
+                    <section class="gaia-list fit scroll sticky">
+                        <article>
+                            <header>Paragraphs</header>
+                            <ul id="txts">
+                            </ul>
+                        </article>
+                        <article>
+                            <header>Adatfelvitel</header>
+                            <ul>
+                            <li><input id="txt" type="text"></li>
+                            <li><button id="action" class="icon-share">ok</button></li>
+                            </ul>
+                    </section>
+                </div>
+            </section>
+        </div>        
+        <script>
+            function addTxt(){
+                var li=document.createElement("LI");
+                li.innerHTML=document.getElementById("txt").value;
+                document.getElementById("txts").appendChild(li);
+            }
+            document.querySelector("div[role='main']").style.height=""+(screen.height-50)+"px";
+            document.getElementById("action").addEventListener("click",addTxt);
+        </script>
+    </body>
+</html>
