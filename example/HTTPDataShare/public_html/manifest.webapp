@@ -1,0 +1,14 @@
+{
+  "name": "Adatmegosztas",
+  "description": "felhasznalok kozotti adatmegosztas",
+  "launch_path": "/index.html",
+  "icons": {
+    "512": "/img/icon-512.png",
+    "128": "/img/icon-128.png"
+  },
+  "developer": {
+    "name": "(K)",
+    "url": "http://github.com/uni-firefoxos"
+  },
+  "default_locale": "en"
+}

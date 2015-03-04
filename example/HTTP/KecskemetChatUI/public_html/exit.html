@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Chat Exit</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/confirm.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <form role="dialog" data-type="confirm" onsubmit="return false;">
+            <section>
+                <h1>Megerosites</h1><!-- this heading is optional -->
+                <p>Valoban ki szeretnel lepni?</p>
+            </section>
+            <menu>
+                <button id="back" class="recommend">Nem</button>
+                <button class="danger">igen</button>
+            </menu>
+        </form>
+
+
+        <script>
+            function back(){
+                console.log("back");
+                window.location.href = "index.html";
+            }
+            
+            function exit() {window.close();}
+            
+            document.querySelector(".danger").addEventListener("click", exit);
+            document.querySelector("#back").addEventListener("click", back);
+        </script>
+    </body>
+</html>

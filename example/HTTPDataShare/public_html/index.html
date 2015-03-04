@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Adatmegosztas</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/headers.css" rel="stylesheet" type="text/css">
+        <link href="css/layout.css" rel="stylesheet" type="text/css">
+        <link href="css/buttons.css" rel="stylesheet" type="text/css">
+        <link href="css/input_areas.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <section role="region">
+            <header>
+                <h1>Adatmegosztas</h1>
+            </header>
+        </section>        
+
+        <section class="gaia-list fit scroll sticky">
+            <article>
+                <header>Adatküldés</header>
+                <ul>
+                    <li>
+                        <p><input type="text" placeholder="kinek" id="owner"></p>
+                    </li>
+                    <li>
+                        <p><input type="text" placeholder="mit" id="data"></p>
+                    </li>
+                    <li>
+                        <p><button id="send" class="recommend">Küld</button></p>
+                    </li>
+                    <li>
+                        <p><button id="get" class="recommend">Kér</button></p>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <ul id="msglist"></ul>
+            </article>
+        </section>
+        <script>
+            function reqListener() {
+                console.log(this.responseText);
+            }
+            var appid="jkqxl2_0";
+            function sendData() {
+                var owner=document.getElementById("owner").value;
+                var text=document.getElementById("data").value;
+                var oReq = new XMLHttpRequest();
+                oReq.onload = reqListener;
+                oReq.open("post", "http://k-firefoxos.appspot.com/objects", true);
+                oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                oReq.send("appid="+appid+"&owner="+owner+"&text="+text);
+            }
+            
+            document.querySelector("#send").addEventListener("click", sendData);
+            
+            function viewData(){
+                var ul=document.getElementById("msglist");
+                var li=document.createElement("LI");
+                li.innerHTML=this.responseText;
+                ul.appendChild(li);
+            }
+            
+            function showData(){
+                document.getElementById("msglist").innerHTML="";
+                eval("var ids="+this.responseText+";");
+                for(var x=0;x<ids.length-1;x++){
+                    var oReq = new XMLHttpRequest();
+                    oReq.onload = viewData;
+                    oReq.open("get", "http://k-firefoxos.appspot.com/objects?appid="+appid+"&id="+ids[x], true);
+                    oReq.send();
+                }
+                
+            }
+            
+            function getData(){
+                var owner=document.getElementById("owner").value;
+                var oReq = new XMLHttpRequest();
+                oReq.onload = showData;
+                oReq.open("get", "http://k-firefoxos.appspot.com/objects?appid="+appid+"&owner="+owner, true);
+                oReq.send();
+                
+            }
+            
+            document.querySelector("#get").addEventListener("click", getData);
+        </script>
+    </body>
+</html>
