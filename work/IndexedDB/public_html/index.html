@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>IndexedDB</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <input type="text" id="data">
+            <button id="ok">Mentés</button>
+        </div>
+    </body>
+    
+    <script>
+        var idb = window.indexedDB;
+        var req = window.idb.open("minta", 2);
+        var open_result;
+        var object_store;
+        
+        req.onerror = function(evt) {
+            console.low(evt.target.error.message);
+        };
+        req.onupgradeneeded = function(evt) {
+            open_result = evt.currentTarget.result;
+            open_result.createObjectStore("toDoList", {keyPath: "taskTitle"});
+        };
+        req.onsuccess = function() {
+            open_result = this.result;
+        };
+        
+        document.getElementById("ok").addEventListener("click", function() {
+            console.log("....");
+            object_store = open_result.transaction("toDoList", "readwrite").objectStore("toDoList");
+            var osr = object_store.add({taskTitle: document.getElementById("data").value});
+            osr.onsuccess = function() {
+                console.log("Sikeres hozzáadás.");
+                // Ide jöhet a listázás
+            };
+        });
+    </script>
+</html>
