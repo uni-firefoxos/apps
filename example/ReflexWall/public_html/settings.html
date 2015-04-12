@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Settings</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style/headers.css" rel="stylesheet" type="text/css">
+        <link href="style/input_areas.css" rel="stylesheet" type="text/css">
+        <link href="style/layout.css" rel="stylesheet" type="text/css">
+        <link href="style/status.css" rel="stylesheet" type="text/css">
+        <style>
+            html{font-size: xx-small;}
+        </style>
+    </head>
+    <body>
+        <section id="drawer" role="region">
+            <header>
+                <a href="index.html"><span class="icon icon-back">vissza</span></a>
+                <h1>Settings</h1>
+            </header>
+        </section>
+        <section class="gaia-list fit scroll sticky">
+            <article>
+                <header>Kommunikáció</header>
+                <ul>
+                    <li><input type="text" id="serverurl" placeholder="game server url"></li>
+                    <li><input type="text" id="toplistaurl" placeholder="toplista"></li>
+                </ul>
+            </article>
+            <article>
+                <header>Azonosítás</header>
+                <ul>
+                    <li><input type="text" id="nick" placeholder="nick / name of phone"></li>
+                </ul>
+            </article>
+            <footer>
+                <ul>
+                    <li><button id="save">Mentés</button></li>
+                </ul>
+            </footer>
+        </section>
+        <script>
+            function saveSettings(){
+                localStorage.setItem("server",document.getElementById("serverurl").value);
+                localStorage.setItem("nick",document.getElementById("nick").value);
+                window.location.href="index.html";
+            }
+            document.getElementById("save").addEventListener("click",saveSettings);
+            if(localStorage.getItem("server")!=null)
+                document.getElementById("serverurl").value=localStorage.getItem("server");
+            if(localStorage.getItem("nick")!=null)
+                document.getElementById("nick").value=localStorage.getItem("nick");
+
+        </script>
+    </body>
+</html>

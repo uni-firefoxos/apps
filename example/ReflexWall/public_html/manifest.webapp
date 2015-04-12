@@ -1,0 +1,16 @@
+{
+    "version": "1.0",
+    "name": "ReflexWall",
+    "description": "...",
+    "launch_path": "/index.html",
+    "fullscreen": "true",
+    "icons": {
+        "64": "/64.png",
+        "128": "/128.png"
+    },
+    "developer": {
+        "name": "Karoczkai Krisztian",
+        "url": "http://github.com/uni-firefoxos/"
+    }
+  
+}
