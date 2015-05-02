@@ -1,0 +1,16 @@
+{
+  "varsion":"1.0",
+  "name": "Forty-nine",
+  "description": "Mobil alkalmazás fejlesztés FirefoxOS platformon féléves feladat. Az Android platformon népszerű 7x7 egy gyenge reprodukciója a forty-nine.",
+  "launch_path": "/index.html",
+  "icons": {
+    "16": "/icons/icon16x16.png",
+    "48": "/icons/icon48x48.png",
+    "60": "/icons/icon60x60.png",
+    "128": "/icons/icon128x128.png"
+  },
+  "developer": {
+    "name": "Takács Dániel",
+	"url": "http://github.com/uni-firefoxos"
+  }
+}

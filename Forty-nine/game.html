@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+	<head>
+		<title>7x7</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/buttons.css">
+		<script src="js/jquery-1.11.2.min.js" defer></script>
+	</head>
+
+	<body>
+		<div id="big-container">
+			<div id="container-buttons">
+				<button id="button-back">Back</button>
+			</div>
+			<p id="score">Score: 0</p>
+			<p id="label-upnext">Up next:</p>
+			<div id="container-upnext">
+				<div id="un_00"></div>
+				<div id="un_01"></div>
+				<div id="un_02"></div>
+				<div id="un_10"></div>
+				<div id="un_11"></div>
+				<div id="un_12"></div>
+			</div>
+			<div id="container-board"></div>
+		</div>
+		<div id="popup-score-input" style="display: none;">
+			<input id="player-name" type="text" placeholder="Nickname" required />
+			<input id="player-score" type="hidden" />
+			<button id="button-submit">Submit</button>
+		</div>
+		<script src="js/app.js" defer></script>
+		<script src="js/core.js" defer></script>
+		<script src="js/main.js" defer></script>
+	</body>
+</html>
