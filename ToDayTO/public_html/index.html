@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ToDoTO</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        
+        <script defer src="js/l10n.js" charset="utf-8"></script>
+        <script src="js/jquery-2.1.4.min.js" type="text/javascript"></script>
+        <script src="js/db.js"></script>
+        <link rel="resource" type="application/l10n" href="locales/locales.ini" />
+        
+        <link href="style/headers.css" rel="stylesheet" type="text/css">
+        <link href="style/drawer.css" rel="stylesheet" type="text/css">
+
+        <link href="style/lists.css" rel="stylesheet" type="text/css">
+        <link href="style/buttons.css" rel="stylesheet" type="text/css"/>
+        
+        <style>
+            html{font-size: xx-small; background: #fff;}
+            #drawer {
+                height: 100%;
+            }
+            #drawer div[role="main"] {
+                background: #fff;
+                height: 100%;
+            }
+            .frame{ 
+                display: block;
+                overflow: hidden;
+                position: relative;
+                margin: 0 auto;
+                height: 480px;
+            }
+            #editpanel{display: none;}
+            
+            #todoList a{
+                text-decoration: none;
+                font-size: medium;
+                color: black;
+                margin: 0 40px;
+            }
+            
+            #todoList li p{
+                white-space: normal;
+            }
+            
+            #todoList {
+                overflow: visible;
+            }
+        </style>
+   </head>
+
+    <body>         
+        <div id="target"></div>
+
+        <script>
+            $(document).ready(function(){
+                openDB();            
+                
+                $("#add").click(function(){
+                    $("#editpanel").css("display","block");
+                    $("#pml").css("display","none");
+                    return false;
+                });
+                
+                $("#cancel").click(function(){
+                    $("#editpanel").css("display","none");
+                    $("#pml").css("display","block");
+                });
+                
+                $("#actiondone").click(function(){
+                    $("#editpanel").css("display","none");
+                    $("#pml").css("display","block");
+                    var day = new Date().getDay();
+                    putObject(TABLE_TODAYTO,{"name":$("#data").val(),"state":"false","day":day});
+                    return false;
+                });
+                
+                $("#btn-droplist").click(function(){
+                   deleteAll();
+                });
+                
+            })
+        </script>  
+        
+        <div id="pml">
+            <article class="frame">
+                <section data-type="sidebar" class="skin-comms">
+                    <header>
+                        <h1 id="base-menu" data-l10n-id="base-menu">index-menu</h1>
+                    </header>
+                    <nav>
+                        <ul>
+                            <li><a id="menu-exit" data-l10n-id="menu-main" href="index.html">menu-main</a></li>
+                            <li><a id="menu-exit" data-l10n-id="menu-exit" href="exit.html">menu-exit</a></li>
+                        </ul>
+                    </nav>
+                </section>
+                <section id="drawer" class="skin-comms" role="region">
+                    <header>
+                        <menu type="toolbar">
+                            <a href="#" id="add"><span class="icon icon-add">add</span></a>
+                        </menu>
+                        <a href="#content"><span class="icon icon-menu">hide sidebar</span></a>
+                        <a href="#drawer"><span class="icon icon-menu">show sidebar</span></a>
+                        <h1 id="index-header" data-l10n-id="index-header">index-header</h1>
+                    </header>
+                    <div style="color:#000000;background-color: #fff;overflow: scroll;min-height:80%">
+                        <section data-type="list">
+                            <header id="index-mylist" data-l10n-id="index-mylist">index-mylist</header>
+                            <ul id="todoList"></ul>
+                        </section>
+                    </div>
+                    <div role="main"> 
+                        <button class="danger" id="btn-droplist" data-l10n-id="btn-droplist">btn-droplist</button>
+                    </div>
+                </section>
+            </article>
+        </div>
+        <div id="editpanel">
+            <section role="region" class="skin-comms" >
+                <header>
+                    <button id="cancel"><span class="icon icon-close">close</span></button>
+                    <menu type="toolbar"><button id="actiondone"  data-l10n-id="action-done">action-done</button></menu>
+                    <h1 data-l10n-id="add-todo">add-todo</h1>
+                </header>
+            </section>            
+            <textarea id="data" style="width: 100%"></textarea>
+        </div>
+
+    </body>
+</html>
