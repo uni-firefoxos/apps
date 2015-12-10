@@ -4,22 +4,12 @@ var DB_VERSION = 1;
 var TABLE_TODAYTO = 'todos';
 var db;
 
-function getRequests() {
-    var s1 = location.search.substring(1, location.search.length).split('&'),
-            r = {}, s2, i;
-    for (i = 0; i < s1.length; i += 1) {
-        s2 = s1[i].split('=');
-        r[decodeURIComponent(s2[0]).toLowerCase()] = decodeURIComponent(s2[1]);
-    }
-    return r;
-}
-
 function openDB() {
     var req = window.indexedDB.open(DB_NAME, DB_VERSION);
     req.onsuccess = function(evt) {
         db = this.result;
         console.log("succes open db");
-        getAllBucketByName();
+        getAllTodotByName();
     };
     req.onerror = function(evt) {
         console.error("req.onerror:", evt.target.error.message);
@@ -42,7 +32,7 @@ function getObjectStore(store_name, mode) {
     return tx.objectStore(store_name);
 }
 
-function getAllBucketByName() {
+function getAllTodotByName() {
     store = getObjectStore(TABLE_TODAYTO, 'readonly');
 
     req = store.index("name").openCursor();
@@ -55,9 +45,6 @@ function getAllBucketByName() {
             if(current_day == value.day)
             {
                 newP0 = document.createElement("p");
-                
-                //newP1 = document.createElement("p");
-                //newP1.innerHTML = value.state;
                 newC = document.createElement('input');
                 newC.type = 'checkbox';
                 newC.setAttribute("id",value.id);
@@ -69,12 +56,6 @@ function getAllBucketByName() {
                 
                 newC.name= value.id;
                 
-                
-                newP0.innerHTML = value.name;
-                
-                //newP0.appendChild(newlabel);
-                //newP0.appendChild(newC);
-                
                 newA = document.createElement("a");
                 newA.setAttribute("href", "#" + value.id);
                 newA.onclick = function (event) {
@@ -82,16 +63,17 @@ function getAllBucketByName() {
                     return false;
                 };
                 
-                //newA.appendChild(newlabel);
-                newA.appendChild(newC);   
+                var newlabel = document.createElement("Label");
+                newlabel.setAttribute("for", value.id);
+                newlabel.innerHTML = value.name;
                 
-                newP0.appendChild(newA);
-              
-                //newC.appendChild(newP1);
+                newP0.appendChild(newlabel);
+                newP0.appendChild(newC);
+                
+                newA.appendChild(newP0);
+
                 newLI = document.createElement("li");
-                
-                newLI.appendChild(newP0);
-                //newLI.appendChild(newC);
+                newLI.appendChild(newA);
                 document.querySelector("#todoList").appendChild(newLI);
                 cursor.continue();
             }
@@ -108,7 +90,7 @@ function deleteAll(){
     store.clear();
     document.querySelector("#todoList").innerHTML = "";
 
-    getAllBucketByName();           
+    getAllTodotByName();           
     
 }
 
@@ -117,7 +99,7 @@ function putObject(pName, data) {
     request = storeI.add(data); 
     request.onsuccess = function(event) {
         document.querySelector("#todoList").innerHTML="";
-        getAllBucketByName();
+        getAllTodotByName();
     };
     request.onerror = function(event) {
         console.log("tranzakcioserr:" + event.result.error.message);
@@ -140,7 +122,7 @@ function modifySate(pName, id, state){
         var requestUpdate =store.put(data);
         requestUpdate.onsuccess = function(event) {
             document.querySelector("#todoList").innerHTML="";
-            getAllBucketByName();
+            getAllTodotByName();
         }
         requestUpdate.oneror = function(event) {}
     };
