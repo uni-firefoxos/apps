@@ -1,0 +1,5 @@
+﻿InventoryZ: Hodvogner Zoltán
+-----------------------------
+WebCodeCamJS: Tóth András
+Barcode_Reader: Eddie Larsson
+qrcodelib: Lazar László
