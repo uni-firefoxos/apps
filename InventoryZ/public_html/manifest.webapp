@@ -1,0 +1,19 @@
+{
+ "name": "InventoryZ",
+ "description": "Inventory of goods.",
+ "launch_path": "/index.html",
+ "icons": { 
+   "64": "/img/inventory-64.png",
+   "128": "/img/inventory-128.png"
+ },
+
+ "developer": {  "name": "Zoltan Hodvogner",
+  "url": "http://hodvogner.hu"
+ },
+ "csp" : "default-src *; script-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline'",
+ "default_locale": "hu",
+ "type": "privileged", 
+ "permissions": {
+    "video-capture": { "description": "Required to capture video using getUserMedia()" }
+ }
+}

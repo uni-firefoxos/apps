@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Scan</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style/headers.css" rel="stylesheet" type="text/css"/>
+        <link href="style/input_areas.css" rel="stylesheet" type="text/css">        
+        <link href="style/buttons.css" rel="stylesheet" type="text/css"/>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <script src="js/app.js" type="text/javascript"></script>
+        <style>
+            html, body {
+              margin: 0;
+              padding: 0;
+              font-size: 10px;
+              background-color: #fff;
+              height: 100%;
+              overflow-x: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <section role="region">
+            <header>
+                <button id="backButton" ><span class="icon icon-back">back</span></button>
+                <h1>Scan</h1>
+            </header>         
+        </section>
+        <form>
+            <div class="caption">
+                <h3>QR-code(code,name):</h3>
+            </div>
+            <div class="well" style="position: relative;display: inline-block;">
+                <canvas width="320" height="240" id="qr-canvas"></canvas>
+                <div class="scanner-laser laser-rightBottom" style="opacity: 0.5;"></div>
+                <div class="scanner-laser laser-rightTop" style="opacity: 0.5;"></div>
+                <div class="scanner-laser laser-leftBottom" style="opacity: 0.5;"></div>
+                <div class="scanner-laser laser-leftTop" style="opacity: 0.5;"></div>
+            </div>
+            <div id="scanned-barcode"></div>
+            <button id="scanButton" type="button" class="recommend">Scan</button>
+            <button id="cancelButton" type="button">Cancel</button>
+        </form>  
+        <script src="js/jquery.js" type="text/javascript"></script>
+        <script src="js/webcodecamjquery.js" type="text/javascript"></script>
+        <script src="js/qrcodelib.js" type="text/javascript"></script>
+        <script src="js/scan.js" type="text/javascript"></script>
+    </body>
+</html>
+
