@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Fighter</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/headers.css" rel="stylesheet" type="text/css">
+        <!--<link href="css/layout.css" rel="stylesheet" type="text/css">
+<link href="css/input-areas.css" rel="stylesheet" type="text/css">
+<link href="css/value_selector.css" rel="stylesheet" type="text/css">
+-->
+        <link href="css/buttons.css" rel="stylesheet" type="text/css">
+        
+        <link href="css/tabs.css" rel="stylesheet" type="text/css">
+        
+        <script src="js/app.js" type="text/javascript"></script>
+        <style>
+            html, body {
+                margin: 0;
+                padding: 0;
+                font-size: 10px;
+                background-color: #eee;
+                font-family: sans-serif;
+            }
+
+            h2.bb-docs {
+                font-size: 1.8rem;
+                font-weight: lighter;
+                color: #666;
+                margin: -1px 0 0;
+                background-color: #ffffff;
+                padding: 0.4rem 0.4rem 0.4rem 3rem;
+                border: solid 1px #e8e8e8;
+            }
+
+            .bb-tabpanel {
+                padding: 2rem;
+                font-size: 2rem;
+
+            }
+
+            /* icons */
+            #panel1 a {
+                background-image: url("img/ppp.png");
+                //background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDMwIDkwIj48cGF0aCBmaWxsPSIjMDBDQUYyIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IiBkPSJNMjkuODYzIDY4LjU2OWgtNS41Nzd2Mi43MmMtLjMyLjA2Ni0uNjY1LS4wMDgtLjkxMi0uMjU5bC0zLjA0NC0zLjA5NGMtLjM5NC0uNC0uMzk0LTEuMDQ4IDAtMS40NDhsMy4wNDQtMy4wOTNjLjI0OS0uMjUzLjU5NC0uMzI2LjkxMi0uMjYxdjIuNzM0aDUuNTc4Yy4xODEuODkuMTgxIDEuODEyLS4wMDEgMi43MDF6bS0xMS44MDktNS43MzJjLS4yNDguMjUzLS41OTEuMzI2LS45MTIuMjYxdi0yLjcyaC01LjU3N2MtLjE4MS0uODktLjE4MS0xLjgxLS4wMDEtMi42OTloNS41Nzd2LTIuNzM1Yy4zMjEtLjA2Ni42NjYuMDA4LjkxMi4yNjFsMy4wNDQgMy4wOTRjLjM5NS40LjM5NSAxLjA0OCAwIDEuNDQ2bC0zLjA0MyAzLjA5MnptLTEuNTIxIDEwLjY4bC4wMjIuMDIyYy42MTMtLjM0MyAxLjIxNy0uNzU2IDEuODE3LTEuMTk5bDUuNzI5IDUuMTU0Yy0xLjIwOCAxLjA2MS0yLjUyIDEuOTMtMy44OTkgMi41ODYtMy42NjUtLjY4OC04LjM2My0zLjQ1OS0xMi41NzktNy43NDUtNC4yMTctNC4yODItNi45NDItOS4wNTMtNy42MjMtMTIuNzc1LjY0NS0xLjQwNCAxLjUwMy0yLjczNyAyLjU0OC0zLjk2OGw1LjA3NiA1LjgyNmMtLjQzNS42MDktLjg0MSAxLjIyMy0xLjE3OSAxLjg0NWwuMDIyLjAyM2MtLjU5NCAxLjMyNi43ODEgNC4yMSAzLjM1MiA2LjgyMyAyLjU3MiAyLjYxMyA1LjQxMSA0LjAxMSA2LjcxNCAzLjQwOHoiLz48cGF0aCBmaWxsPSIjNUY1RjVGIiBkPSJNMjkuODYzIDIzLjU2OGgtNS41Nzd2Mi43MmMtLjMyLjA2Ni0uNjY1LS4wMDgtLjkxMi0uMjU5bC0zLjA0NC0zLjA5NGMtLjM5NC0uNC0uMzk0LTEuMDQ4IDAtMS40NDhsMy4wNDQtMy4wOTNjLjI0OS0uMjUzLjU5NC0uMzI4LjkxMi0uMjYxdjIuNzM0aDUuNTc4Yy4xODEuODkxLjE4MSAxLjgxMi0uMDAxIDIuNzAxem0tMTEuODA5LTUuNzMxYy0uMjQ4LjI1My0uNTkxLjMyOC0uOTEyLjI2MXYtMi43MTloLTUuNTc3Yy0uMTgxLS44OS0uMTgxLTEuODEtLjAwMS0yLjcwMWg1LjU3N3YtMi43MzZjLjMyMS0uMDY2LjY2Ni4wMDguOTEyLjI2MWwzLjA0NCAzLjA5NGMuMzk1LjQuMzk1IDEuMDQ4IDAgMS40NDZsLTMuMDQzIDMuMDk0em0tMS41MjEgMTAuNjhsLjAyMi4wMjJjLjYxMy0uMzQzIDEuMjE3LS43NTYgMS44MTctMS4xOTdsNS43MjkgNS4xNTRjLTEuMjA4IDEuMDYxLTIuNTIgMS45MjktMy44OTkgMi41ODYtMy42NjUtLjY4OC04LjM2My0zLjQ1OC0xMi41NzktNy43NDUtNC4yMTctNC4yODQtNi45NDItOS4wNTMtNy42MjMtMTIuNzc3LjY0NS0xLjQwNCAxLjUwMy0yLjczNyAyLjU0OC0zLjk2OGw1LjA3NiA1LjgyNmMtLjQzNS42MDktLjg0MSAxLjIyMy0xLjE3OSAxLjg0NGwuMDIyLjAyM2MtLjU5NCAxLjMyNi43ODEgNC4yMSAzLjM1MiA2LjgyM3M1LjQxMSA0LjAxMSA2LjcxNCAzLjQwOXoiLz48L3N2Zz4=);
+            }
+
+            #panel2 a {
+                //background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDMwIDkwIj48cGF0aCBmaWxsPSIjMDBDQUYyIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IiBkPSJNMjQuMjU5IDcyLjk1OGMwIDIuNTg0LS41MSA0Ljk5MS0xLjM3OCA3LjA0MmgtMTUuNzYyYy0uODY4LTIuMDUyLTEuMzc4LTQuNDU3LTEuMzc4LTcuMDQyaC4wMDV2LS4wMDFjMC0yLjU3NyAyLjEzMS00LjggNS4yMTctNS44NTZsNC4wMzggNC4wNzIgNC4wMzctNC4wNzJjMy4wODUgMS4wNTggNS4yMTcgMy4yNzkgNS4yMTcgNS44NTZ2LjAwMmwuMDA0LS4wMDF6bS05LjI1OS03LjMwNWMtMi45MTcgMC01LjI4NC0yLjM4NC01LjI4NC01LjMyNnMyLjM2Ny01LjMyNyA1LjI4NC01LjMyN2MyLjkxNiAwIDUuMjgzIDIuMzg1IDUuMjgzIDUuMzI3cy0yLjM2NyA1LjMyNi01LjI4MyA1LjMyNnoiLz48cGF0aCBmaWxsPSIjNUY1RjVGIiBkPSJNMjQuMjU5IDI3Ljk1OGMwIDIuNTg0LS41MSA0Ljk5MS0xLjM3OCA3LjA0MmgtMTUuNzYyYy0uODY4LTIuMDUyLTEuMzc4LTQuNDU4LTEuMzc4LTcuMDQyaC4wMDV2LS4wMDFjMC0yLjU3NyAyLjEzMS00LjggNS4yMTctNS44NTZsNC4wMzggNC4wNzIgNC4wMzctNC4wNzJjMy4wODUgMS4wNTggNS4yMTcgMy4yNzkgNS4yMTcgNS44NTZ2LjAwMmwuMDA0LS4wMDF6bS05LjI1OS03LjMwNWMtMi45MTcgMC01LjI4NC0yLjM4NC01LjI4NC01LjMyNiAwLTIuOTQzIDIuMzY3LTUuMzI3IDUuMjg0LTUuMzI3IDIuOTE2IDAgNS4yODMgMi4zODUgNS4yODMgNS4zMjcgMCAyLjk0MS0yLjM2NyA1LjMyNi01LjI4MyA1LjMyNnoiLz48L3N2Zz4=);
+               background-image: url("img/ppp.png");
+            }
+        </style>
+    </head>
+    <body role="application">
+        <section role="region">
+            <header> 
+                <h1>FIGHTER</h1>              
+            </header>
+            
+            <ul role="tablist" class="bb-tablist">                
+                <li id="panel1" role="presentation">
+                    <a id="tab1" href="#panel1" class="icon" role="tab" aria-controls="tabpanel1">Főképernyő</a>
+                    <div id="tabpanel1" class="bb-tabpanel" role="tabpanel" aria-labelledby="tab1">  
+                          <img style="margin-top: 50px" src="img/logo_fighter2.gif" alt="nik_logo" height="150" width="250"/>
+                          
+                        <h1 style="margin-top: 50px">TOP 5</h1>
+                        <ul >
+                          <li id="score1"></li>
+                          <li id="score2"></li>
+                          <li id="score3"></li>
+                          <li id="score4"></li>
+                          <li id="score5"></li>
+                         </ul>
+                    </div>
+                </li>
+                <li id="panel2" role="presentation" >
+                    <a id="tab2" href="#panel2" class="icon" role="tab" aria-controls="tabpanel2">Csata</a>
+                    <div id="tabpanel2" class="bb-tabpanel" role="tabpanel" aria-labelledby="tab2">                        
+                        <section style="padding-top: 40px">
+                            <article>
+                                <header>Saját karakter</header>
+                                <select id="sajat_karakter" class="normal">
+                                    <option value="" selected="selected" disabled="disabled" >válassz Harcost...</option>
+                                    <option value="songoku">Son Goku</option>
+                                    <option value="vegeta">Vegeta</option>
+                                    <option value="kuririn">Krilin</option>
+                                </select>
+                                <header>Ellenfél karakter</header>
+                                <select id="ellenfel_karakter" class="normal">
+                                    <option value="" selected="selected" disabled="disabled" >válassz Harcost...</option>
+                                    <option value="android17">Android 17</option>
+                                    <option value="android18">Android 18</option>
+                                    <option value="picolo">Picolo</option>
+                                </select>
+                                <button>Harc</button>
+                                <button id="bonus">Aktív bónusz</button>
+                                <script>
+                                    document.getElementById('bonus').style.visibility = 'hidden';
+                                </script>
+                                <header id="eredmeny" class="normal"></header>
+                                <header id="bonusS" class="normal"></header>
+                            </article>
+                        </section>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+    </body>    
+</html>

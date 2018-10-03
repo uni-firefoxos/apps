@@ -1,0 +1,14 @@
+{
+  "name": "Fighter",
+    "description": "Dragon Ball :D",
+  "launch_path": "/index.html",
+  "permissions": {},
+  "developer": {
+    "name": "Kapitány Gábor",
+    "url": ""
+  },
+  "icons": {
+    "128": "/img/icon-128.png"
+    
+  }
+}
