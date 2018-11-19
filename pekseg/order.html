@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/headers.css">
+    <link rel="stylesheet" type="text/css" href="css/buttons.css">
+    <link rel="stylesheet" type="text/css" href="css/toolbars.css">
+    <title>Csillag Pékség App</title>
+    <link rel="resource" type="application/l10n" href="locales/locales.ini" />
+    <base target="_blank">
+</head>
+<body>
+	<div class="background">
+		<div class="header" data-role="header">
+			<h1>Rendelés leadása</h1>
+		</div>
+
+		<div class="content" data-role="content">
+			<div align="center">
+				<div>
+					<div class="panel">
+						<p>Rendelés esetén hívjon vagy küldön egy SMS-t.</p>
+						<p>Nyitvatartás fül alatt található időpontokban rendelkezésére állunk.</p>
+						<p>A minőség a különbség.</p>
+					</div>
+					<button id="dial" data-l10n-id="dial-number">Tárcsázás</button>
+
+					<button id="send-sms" data-l10n-id="dial-sms">SMS küldés</button>
+				</div>
+			</div>
+		</div>
+		
+		<div class="footer" data-role="footer">
+			<a href="index.html" data-inline="true" data-icon="home" data-iconpos="notext" data-role="button"></a>
+			<a href="map.html" data-inline="true" data-icon="star" data-iconpos="notext" data-role="button"></a>
+			<a href="availability.html" data-inline="true" data-icon="calendar" data-iconpos="notext" data-role="button"></a>
+			<a href="order.html" data-inline="true" data-icon="action" data-iconpos="notext" data-role="button"></a>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/base.js"></script>
+    <script type="text/javascript" src="js/webapp.js"></script>
+    <script type="text/javascript" src="js/offline.js"></script>
+</body>
+</html>
