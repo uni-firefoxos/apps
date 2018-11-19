@@ -1,0 +1,35 @@
+.header {
+	width: 100%;
+	background-color: lightgray;
+	text-align: center;
+}
+
+.content {
+
+}
+
+.footer {
+	text-align: center;
+	position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: lightgray;
+    color: white;
+}
+
+.panel {
+    border-radius: 25px;
+    border: 1px solid black;
+    padding: 20px; 
+    width: 200px;
+    height: 180px;
+    background:white;
+}
+
+.background {
+    background-image: url("/images/background.jpg") !important;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
